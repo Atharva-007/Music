@@ -1,15 +1,22 @@
+import 'bloc/iphone_14_pro_max_two_bloc.dart';
+import 'models/iphone_14_pro_max_two_model.dart';
 import 'package:atharva__atharva_s_application1/core/app_export.dart';
+import 'package:atharva__atharva_s_application1/core/utils/validation_functions.dart';
 import 'package:atharva__atharva_s_application1/widgets/custom_button.dart';
 import 'package:atharva__atharva_s_application1/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: must_be_immutable
 class Iphone14ProMaxTwoScreen extends StatelessWidget {
-  TextEditingController rectanglethreeController = TextEditingController();
-
-  TextEditingController passwordoneController = TextEditingController();
-
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  static Widget builder(BuildContext context) {
+    return BlocProvider<Iphone14ProMaxTwoBloc>(
+        create: (context) => Iphone14ProMaxTwoBloc(Iphone14ProMaxTwoState(
+            iphone14ProMaxTwoModelObj: Iphone14ProMaxTwoModel()))
+          ..add(Iphone14ProMaxTwoInitialEvent()),
+        child: Iphone14ProMaxTwoScreen());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +87,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                           padding: getPadding(
                                                               top: 40),
                                                           child: Text(
-                                                              "Enter to your account .",
+                                                              "msg_enter_to_your_account"
+                                                                  .tr,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -98,7 +106,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                                       left: 34,
                                                                       top: 33),
                                                               child: Text(
-                                                                  "E-mail",
+                                                                  "lbl_e_mail"
+                                                                      .tr,
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -132,24 +141,35 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                                             bottom:
                                                                                 13),
                                                                         child: Text(
-                                                                            "|",
+                                                                            "lbl"
+                                                                                .tr,
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
                                                                             style: AppStyle.txtInterRegular18DeeporangeA700))),
-                                                                CustomTextFormField(
-                                                                    width:
-                                                                        getHorizontalSize(
-                                                                            347),
-                                                                    focusNode:
-                                                                        FocusNode(),
-                                                                    autofocus:
-                                                                        true,
-                                                                    controller:
-                                                                        rectanglethreeController,
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .center)
+                                                                BlocSelector<
+                                                                        Iphone14ProMaxTwoBloc,
+                                                                        Iphone14ProMaxTwoState,
+                                                                        TextEditingController?>(
+                                                                    selector:
+                                                                        (state) =>
+                                                                            state
+                                                                                .rectanglethreeController,
+                                                                    builder:
+                                                                        (context,
+                                                                            rectanglethreeController) {
+                                                                      return CustomTextFormField(
+                                                                          width: getHorizontalSize(
+                                                                              347),
+                                                                          focusNode:
+                                                                              FocusNode(),
+                                                                          autofocus:
+                                                                              true,
+                                                                          controller:
+                                                                              rectanglethreeController,
+                                                                          alignment:
+                                                                              Alignment.center);
+                                                                    })
                                                               ])),
                                                       Align(
                                                           alignment: Alignment
@@ -160,7 +180,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                                       left: 34,
                                                                       top: 22),
                                                               child: Text(
-                                                                  "Password",
+                                                                  "lbl_password2"
+                                                                      .tr,
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -201,29 +222,45 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                                             13,
                                                                         bottom:
                                                                             13)),
-                                                                CustomTextFormField(
-                                                                    width:
-                                                                        getHorizontalSize(
-                                                                            347),
-                                                                    focusNode:
-                                                                        FocusNode(),
-                                                                    autofocus:
-                                                                        true,
-                                                                    controller:
-                                                                        passwordoneController,
-                                                                    hintText:
-                                                                        "Enter the password....",
-                                                                    textInputAction:
-                                                                        TextInputAction
-                                                                            .done,
-                                                                    textInputType:
-                                                                        TextInputType
-                                                                            .visiblePassword,
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .center,
-                                                                    isObscureText:
-                                                                        true)
+                                                                BlocSelector<
+                                                                        Iphone14ProMaxTwoBloc,
+                                                                        Iphone14ProMaxTwoState,
+                                                                        TextEditingController?>(
+                                                                    selector:
+                                                                        (state) =>
+                                                                            state
+                                                                                .passwordoneController,
+                                                                    builder:
+                                                                        (context,
+                                                                            passwordoneController) {
+                                                                      return CustomTextFormField(
+                                                                          width: getHorizontalSize(
+                                                                              347),
+                                                                          focusNode:
+                                                                              FocusNode(),
+                                                                          autofocus:
+                                                                              true,
+                                                                          controller:
+                                                                              passwordoneController,
+                                                                          hintText: "msg_enter_the_password"
+                                                                              .tr,
+                                                                          textInputAction: TextInputAction
+                                                                              .done,
+                                                                          textInputType: TextInputType
+                                                                              .visiblePassword,
+                                                                          alignment: Alignment
+                                                                              .center,
+                                                                          validator:
+                                                                              (value) {
+                                                                            if (value == null ||
+                                                                                (!isValidPassword(value, isRequired: true))) {
+                                                                              return "Please enter valid password";
+                                                                            }
+                                                                            return null;
+                                                                          },
+                                                                          isObscureText:
+                                                                              true);
+                                                                    })
                                                               ])),
                                                       Align(
                                                           alignment: Alignment
@@ -233,7 +270,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                                   getPadding(
                                                                       top: 20),
                                                               child: Text(
-                                                                  "Forgot the password?",
+                                                                  "msg_forgot_the_password"
+                                                                      .tr,
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -246,7 +284,7 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                           height:
                                                               getVerticalSize(
                                                                   49),
-                                                          text: "Login",
+                                                          text: "lbl_login".tr,
                                                           margin: getMargin(
                                                               left: 15,
                                                               top: 10,
@@ -258,8 +296,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                               text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                        text:
-                                                                            "Don’t have an account ?",
+                                                                        text: "msg_don_t_have_an_account2"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             color: ColorConstant
                                                                                 .black900,
@@ -270,8 +308,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                                                                             fontWeight:
                                                                                 FontWeight.w400)),
                                                                     TextSpan(
-                                                                        text:
-                                                                            " Sign Up",
+                                                                        text: "lbl_sign_up"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             color: ColorConstant
                                                                                 .redA70001,
@@ -298,7 +336,7 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
                           child: Container(
                               width: getHorizontalSize(234),
                               margin: getMargin(left: 25, top: 283),
-                              child: Text("Hello.\nWelcome back !",
+                              child: Text("msg_hello_welcome_back".tr,
                                   maxLines: null,
                                   textAlign: TextAlign.left,
                                   style: AppStyle.txtInterExtraBold30)))
@@ -306,6 +344,8 @@ class Iphone14ProMaxTwoScreen extends StatelessWidget {
   }
 
   onTapColumndash35121(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.iphone14ProMaxOneScreen);
+    NavigatorService.pushNamed(
+      AppRoutes.iphone14ProMaxOneScreen,
+    );
   }
 }
