@@ -1,10 +1,17 @@
+import 'bloc/iphone_14_pro_max_one_bloc.dart';
+import 'models/iphone_14_pro_max_one_model.dart';
 import 'package:atharva__atharva_s_application1/core/app_export.dart';
 import 'package:atharva__atharva_s_application1/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-// ignore_for_file: must_be_immutable
 class Iphone14ProMaxOneScreen extends StatelessWidget {
-  TextEditingController rectanglethreeController = TextEditingController();
+  static Widget builder(BuildContext context) {
+    return BlocProvider<Iphone14ProMaxOneBloc>(
+        create: (context) => Iphone14ProMaxOneBloc(Iphone14ProMaxOneState(
+            iphone14ProMaxOneModelObj: Iphone14ProMaxOneModel()))
+          ..add(Iphone14ProMaxOneInitialEvent()),
+        child: Iphone14ProMaxOneScreen());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +61,8 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                               text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                        text:
-                                                                            "Swipe up",
+                                                                        text: "lbl_swipe_up"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             color: ColorConstant
                                                                                 .black900,
@@ -66,8 +73,8 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                             fontWeight:
                                                                                 FontWeight.w800)),
                                                                     TextSpan(
-                                                                        text:
-                                                                            " to explore the world of music",
+                                                                        text: "msg_to_explore_the_world"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             color: ColorConstant
                                                                                 .red900,
@@ -128,10 +135,12 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                           alignment: Alignment
                                                               .topCenter,
                                                           child: Padding(
-                                                              padding: getPadding(
-                                                                  top: 153),
+                                                              padding:
+                                                                  getPadding(
+                                                                      top: 153),
                                                               child: Text(
-                                                                  "MUSIC",
+                                                                  "lbl_music"
+                                                                      .tr,
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -200,7 +209,7 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                             width:
                                                                                 getHorizontalSize(245),
                                                                             margin: getMargin(top: 38, right: 49),
-                                                                            child: Text("Enter to your account .", maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular18))),
+                                                                            child: Text("msg_enter_to_your_account".tr, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular18))),
                                                                     Padding(
                                                                         padding: getPadding(
                                                                             left:
@@ -208,7 +217,8 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                             top:
                                                                                 21),
                                                                         child: Text(
-                                                                            "E-mail",
+                                                                            "lbl_e_mail"
+                                                                                .tr,
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
                                                                             textAlign: TextAlign.left,
@@ -221,8 +231,12 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                             width: getHorizontalSize(347),
                                                                             margin: getMargin(top: 5),
                                                                             child: Stack(alignment: Alignment.center, children: [
-                                                                              Align(alignment: Alignment.bottomLeft, child: Container(width: getHorizontalSize(97), margin: getMargin(left: 24, bottom: 10), child: Text("|", maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular18DeeporangeA700))),
-                                                                              CustomTextFormField(width: getHorizontalSize(347), focusNode: FocusNode(), autofocus: true, controller: rectanglethreeController, textInputAction: TextInputAction.done, alignment: Alignment.center)
+                                                                              Align(alignment: Alignment.bottomLeft, child: Container(width: getHorizontalSize(97), margin: getMargin(left: 24, bottom: 10), child: Text("lbl".tr, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular18DeeporangeA700))),
+                                                                              BlocSelector<Iphone14ProMaxOneBloc, Iphone14ProMaxOneState, TextEditingController?>(
+                                                                                  selector: (state) => state.rectanglethreeController,
+                                                                                  builder: (context, rectanglethreeController) {
+                                                                                    return CustomTextFormField(width: getHorizontalSize(347), focusNode: FocusNode(), autofocus: true, controller: rectanglethreeController, textInputAction: TextInputAction.done, alignment: Alignment.center);
+                                                                                  })
                                                                             ]))),
                                                                     Container(
                                                                         width: getHorizontalSize(
@@ -233,7 +247,8 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                             top:
                                                                                 21),
                                                                         child: Text(
-                                                                            "Password\n",
+                                                                            "lbl_password"
+                                                                                .tr,
                                                                             maxLines:
                                                                                 null,
                                                                             textAlign:
@@ -243,7 +258,7 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                         alignment:
                                                                             Alignment.center,
                                                                         child: Container(
-                                                                            height: getVerticalSize(57),
+                                                                            height: getVerticalSize(70),
                                                                             width: getHorizontalSize(347),
                                                                             margin: getMargin(top: 1),
                                                                             child: Stack(alignment: Alignment.center, children: [
@@ -254,7 +269,7 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                                       padding: getPadding(left: 27, top: 2, right: 27, bottom: 2),
                                                                                       decoration: AppDecoration.outlineBlack900.copyWith(borderRadius: BorderRadiusStyle.roundedBorder10),
                                                                                       child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.end, children: [
-                                                                                        Container(width: getHorizontalSize(274), margin: getMargin(top: 14, right: 19), child: Text("Enter the password....", maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular18RedA70002))
+                                                                                        Container(width: getHorizontalSize(274), margin: getMargin(top: 14, right: 19, bottom: 14), child: Text("msg_enter_the_password".tr, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular18RedA70002))
                                                                                       ])))
                                                                             ]))),
                                                                     Container(
@@ -270,12 +285,10 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                             bottom:
                                                                                 20),
                                                                         child: Stack(
-                                                                            alignment:
-                                                                                Alignment.bottomCenter,
                                                                             children: [
                                                                               Align(alignment: Alignment.bottomLeft, child: Container(height: getVerticalSize(49), width: getHorizontalSize(347), margin: getMargin(bottom: 1), decoration: BoxDecoration(color: ColorConstant.red600, borderRadius: BorderRadius.circular(getHorizontalSize(10))))),
-                                                                              Align(alignment: Alignment.bottomCenter, child: Container(width: getHorizontalSize(69), child: Text("Login", maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular14))),
-                                                                              Align(alignment: Alignment.topRight, child: Container(width: getHorizontalSize(155), child: Text("Forgot the password?", maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular14Black900)))
+                                                                              Container(width: getHorizontalSize(69), margin: getMargin(left: 150, top: 12), child: Text("lbl_login".tr, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular14)),
+                                                                              Align(alignment: Alignment.topRight, child: Container(width: getHorizontalSize(155), child: Text("msg_forgot_the_password".tr, maxLines: null, textAlign: TextAlign.left, style: AppStyle.txtInterRegular14Black900)))
                                                                             ]))
                                                                   ]))),
                                                       Align(
@@ -291,16 +304,16 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
                                                                   text: TextSpan(
                                                                       children: [
                                                                         TextSpan(
-                                                                            text:
-                                                                                "Don’t have an account ?",
+                                                                            text: "msg_don_t_have_an_account2"
+                                                                                .tr,
                                                                             style: TextStyle(
                                                                                 color: ColorConstant.black900,
                                                                                 fontSize: getFontSize(14),
                                                                                 fontFamily: 'Inter',
                                                                                 fontWeight: FontWeight.w400)),
                                                                         TextSpan(
-                                                                            text:
-                                                                                " Sign Up",
+                                                                            text: "lbl_sign_up"
+                                                                                .tr,
                                                                             style: TextStyle(
                                                                                 color: ColorConstant.redA70001,
                                                                                 fontSize: getFontSize(14),
@@ -316,6 +329,8 @@ class Iphone14ProMaxOneScreen extends StatelessWidget {
   }
 
   onTapImgIcons8doubledow(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.iphone14ProMaxTwoScreen);
+    NavigatorService.pushNamed(
+      AppRoutes.iphone14ProMaxTwoScreen,
+    );
   }
 }

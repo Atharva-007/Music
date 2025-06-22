@@ -10,9 +10,12 @@ class AppRoutes {
 
   static const String appNavigationScreen = '/app_navigation_screen';
 
-  static Map<String, WidgetBuilder> routes = {
-    iphone14ProMaxOneScreen: (context) => Iphone14ProMaxOneScreen(),
-    iphone14ProMaxTwoScreen: (context) => Iphone14ProMaxTwoScreen(),
-    appNavigationScreen: (context) => AppNavigationScreen()
-  };
+  static const String initialRoute = '/initialRoute';
+
+  static Map<String, WidgetBuilder> get routes => {
+        iphone14ProMaxOneScreen: Iphone14ProMaxOneScreen.builder,
+        iphone14ProMaxTwoScreen: Iphone14ProMaxTwoScreen.builder,
+        appNavigationScreen: AppNavigationScreen.builder,
+        initialRoute: Iphone14ProMaxOneScreen.builder
+      };
 }

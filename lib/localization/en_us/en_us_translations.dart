@@ -1,0 +1,25 @@
+final Map<String, String> enUs = {
+  'msg_network_err': 'Network Error',
+  'msg_something_went_wrong': 'Something Went Wrong!',
+  "msg_check_your_app_s":
+      "Check your app's UI from the below demo screens of your app.",
+  "msg_swipe_up_to_explore": "Swipe up to explore the world of music",
+  "msg_enter_to_your_account": "Enter to your account .",
+  "msg_enter_the_password": "Enter the password....",
+  "lbl_sign_up": " Sign Up",
+  "lbl_password": "Password\n",
+  "msg_iphone_14_pro_max2": "iPhone 14 Pro Max - Two",
+  "msg_don_t_have_an_account": "Don’t have an account ? Sign Up",
+  "msg_forgot_the_password": "Forgot the password?",
+  "msg_iphone_14_pro_max": "iPhone 14 Pro Max - One",
+  "lbl_login": "Login",
+  "msg_to_explore_the_world": " to explore the world of music",
+  "lbl": "|",
+  "msg_don_t_have_an_account2": "Don’t have an account ?",
+  "msg_hello_welcome_back": "Hello.\nWelcome back !",
+  "lbl_music": "MUSIC",
+  "lbl_app_navigation": "App Navigation",
+  "lbl_swipe_up": "Swipe up",
+  "lbl_password2": "Password",
+  "lbl_e_mail": "E-mail"
+};
